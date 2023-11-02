@@ -32,7 +32,6 @@ export default function App() {
     axios.get(url).then(showWeather);
   }
  
-
   return (
     
     <div className="App">
@@ -55,5 +54,5 @@ export default function App() {
       </div>
     </div>
   )
+  }
 
-}
