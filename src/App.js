@@ -52,6 +52,7 @@ export default function App() {
           </li>
         </ul>
       </div>
+      <a href="https://github.com/tatra-t/weather-react/tree/master/src">My github</a>
     </div>
   )
   }
