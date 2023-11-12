@@ -6,9 +6,8 @@ import FormattedDate from "./FormattedDate";
 import WeatherTemperature from "./weatherTemperature";
 
 
-export default function App() {
-
-        let [city, setCity] = useState("");
+export default function App(props) {
+        let [city, setCity] = useState(props.defaultCity);
         let [temperature, setTemperature] = useState("");
         let [temperatureFeel, setTemperatureFeel] = useState("");
         let [temperatureMin, setTemperatureMin] = useState("");
@@ -52,7 +51,7 @@ export default function App() {
         <div className="container">
         <nav className="navbar bg-light">
             <div className="container-fluid">
-                <a className="navbar-brand">Weather in World</a>
+                <a href="/" className="navbar-brand">Weather in World</a>
                 <form className="d-flex" role="search" onSubmit={handleSubmit}>
                     <input className="form-control me-2" type="search" placeholder="Search city" aria-label="Search" onChange={updateCity}/>
                     <button className="btn btn-outline-success" type="submit">Search</button>
@@ -68,9 +67,9 @@ export default function App() {
                 <h2 id="dateNow">
                   <FormattedDate date={dateNow}/>
                 </h2>
-                <h2 id="time"></h2>
+                
         </div>
-        <WeatherTemperature celsius= {temperature} tem_feel = {temperatureFeel} temp_max = {temperatureMax}
+        <WeatherTemperature celsius= {temperature} temp_feel = {temperatureFeel} temp_max = {temperatureMax}
          temp_min = {temperatureMin} icon ={icon} description = {description} wind = {wind} 
          humidity = {humidity} />
         <div className="row ">   
@@ -84,7 +83,7 @@ export default function App() {
           <br />
       </div>
       </div>
-        <a href="">Open-source code</a> by Tetiana Dushenko
+        <a href="https://github.com/tatra-t/weather-react">Open-source code</a> by Tetiana Dushenko
     </div>
 
     )
