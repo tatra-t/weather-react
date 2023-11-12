@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.css';
 import "./App.css"
 import axios from "axios";
+import FormattedDate from "./FormattedDate";
 
 
 
@@ -17,7 +18,8 @@ export default function App() {
         let [description, setDescription] = useState("");
         let [icon, setIcon] = useState("");
         let [nameCity, setNameCity] = useState("");
-      
+        let [dateNow, setDateNow] = useState("");
+
         function showWeather(response) {
           setTemperature(Math.round(response.data.main.temp));
           setTemperatureFeel(Math.round(response.data.main.feels_like));
@@ -30,6 +32,7 @@ export default function App() {
           setIcon(
             `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
           );
+          setDateNow(response.data.dt);
         }
         function updateCity(event) {
           event.preventDefault();
@@ -41,7 +44,7 @@ export default function App() {
           let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=5bd8dd5876af31be7dd1dd4666c7f2a5&units=metric`;
           axios.get(url).then(showWeather);
         }
-
+        console.log({dateNow});
     return (
     <div className = "code">
         <div className="container">
@@ -55,12 +58,14 @@ export default function App() {
             </div>
             <div className="col-8"></div>
             <div className="col-4 curLoc">
-            <a href="">select current location </a></div> 
+            </div> 
         </nav>
 
 <div className="today">
                 <h1>{nameCity}</h1>
-                <h2 id="dateNow"> </h2>
+                <h2 id="dateNow">
+                  <FormattedDate date={dateNow}/>
+                </h2>
                 <h2 id="time"> </h2>
         </div>
 
@@ -77,7 +82,6 @@ export default function App() {
             </div>
             <div className="col-6 now2">
                 <span id="weekDay"> </span>
-                <br />
                 <span className="now3"> <span id="tempCurMax">{temperatureMax}</span>° / <span id="tempCurMin">{temperatureMin}</span> ° </span>
                 <br /> <hr/> <span id="main"> </span>{description} <br /> Wind <span id="wind">{wind} </span> m/s <br />
                 Humidity <span id="humidity">{humidity}</span> %
