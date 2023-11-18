@@ -1,0 +1,14 @@
+.col {
+    background-color: #d1e7fd;
+    border-radius:  20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.imgIcon {
+    height: 50px;
+    width: 50px;
+}
+
+.forecast-min {
+    color: #3a79ad;
+}
